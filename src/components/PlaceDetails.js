@@ -75,65 +75,65 @@ const PlaceDetails = () => {
 
       <hr />
       <ul className="list-group rounded-0">
+
         <li className="list-group-item">
-          <div className="d-flex">
-            <div className="me-3">
+          <div className="row">
+            <div className="col-1 text-primary">
               <i className="fas fa-map-marker-alt"></i>
             </div>
-            <div>
+            <div className="col-11">
               <span>Dirección</span>
             </div>
           </div>
         </li>
 
         <li className="list-group-item">
-          <div className="d-flex">
-            <div className="me-3">
+          <div className="row">
+            <div className="col-1 text-primary">
               <i className="fas fa-globe"></i>
             </div>
-            <div>
-              <span>Webpage</span>
+            <div className="col-11">
+              <span>Página</span>
             </div>
           </div>
         </li>
 
         <li className="list-group-item">
-          <div className="d-flex justify-content-between">
-            <div className="d-flex">
-              <div className="me-3">
-                <i className="fas fa-phone-alt"></i>
-              </div>
-              <div>
-                <span>Teléfono</span>
-              </div>
+          <div className="row">
+            <div className="col-1 text-primary">
+              <i className="far fa-save"></i>
             </div>
-            <div>
+            <div className="col-9">
+              <span>Teléfono</span>
+            </div>
+            <div className="col-1">
               <span className="badge bg-primary rounded-pill">14</span>
             </div>
           </div>
         </li>
 
         <li className="list-group-item">
-          <div className="d-flex">
-            <div className="me-3">
+          <div className="row">
+            <div className="col-1 text-primary">
               <i className="fas fa-clock"></i>
             </div>
-            <div>
+            <div className="col-11">
               <span>Horarios</span>
             </div>
           </div>
         </li>
 
         <li className="list-group-item">
-          <div className="d-flex">
-            <div className="me-3">
+          <div className="row">
+            <div className="col-1 text-primary">
               <i className="far fa-save"></i>
             </div>
-            <div>
+            <div className="col-11">
               <span>Guardar</span>
             </div>
           </div>
         </li>
+        
       </ul>
       <hr />
       <p>
