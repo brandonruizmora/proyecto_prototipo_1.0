@@ -5,3 +5,12 @@
 p {
   font-size: 10px;
 }
+
+.circle {
+  height: 40px;
+  width: 40px;
+}
+
+.font-xs {
+  font-size: 14px;
+}

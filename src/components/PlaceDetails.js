@@ -9,66 +9,66 @@ const PlaceDetails = () => {
       <hr />
       <div className="container">
         <div className="row bg-success justify-content-center">
-          <div className="col-2 bg-white">
-            <button className="btn btn-outline-primary rounded-circle">
-              <i class="fas fa-directions"></i>
+          <div className="col-2 bg-white text-center">
+            <button className="btn btn-outline-primary rounded-circle circle">
+              <div className="font-xs">
+                <i class="fas fa-directions"></i>
+              </div>
             </button>
           </div>
 
-          <div className="col-2 bg-danger">
-            <button className="btn btn-outline-primary rounded-circle">
-              <i class="far fa-bookmark"></i>
+          <div className="col-2 bg-danger text-center">
+            <button className="btn btn-outline-primary rounded-circle circle">
+              <div className="font-xs">
+                <i class="far fa-bookmark"></i>
+              </div>
             </button>
           </div>
 
-          <div className="col-2 bg-warning">
-            <button className="btn btn-outline-primary rounded-circle">
-              <i class="fas fa-map-marked-alt"></i>
+          <div className="col-2 bg-warning text-center">
+            <button className="btn btn-outline-primary rounded-circle circle">
+              <div className="font-xs">
+                <i class="fas fa-map-marked-alt"></i>
+              </div>
             </button>
           </div>
 
-          <div className="col-2 bg-danger">
-            <button className="btn btn-outline-primary rounded-circle">
-              <i class="fas fa-mobile-alt"></i>
+          <div className="col-2 bg-danger text-center">
+            <button className="btn btn-outline-primary rounded-circle circle">
+              <div className="font-xs">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
             </button>
           </div>
 
-          <div className="col-2 bg-white">
-            <button className="btn btn-outline-primary rounded-circle">
-              <i class="fas fa-share-square"></i>
+          <div className="col-2 bg-white text-center">
+            <button className="btn btn-outline-primary rounded-circle circle">
+              <div className="font-xs">
+                <i class="fas fa-share-square"></i>
+              </div>
             </button>
           </div>
         </div>
 
         <div className="row bg-secondary justify-content-center">
           <div className="col-2 bg-white">
-            <p className="text-center">
-              Cómo llegar
-            </p>
+            <p className="text-center">Cómo llegar</p>
           </div>
 
           <div className="col-2 bg-danger">
-            <p className="text-center">
-            Marcar
-            </p>
+            <p className="text-center">Marcar</p>
           </div>
 
           <div className="col-2 bg-warning">
-            <p className="text-center">
-              Abrir en maps
-            </p>
+            <p className="text-center">Abrir en maps</p>
           </div>
 
           <div className="col-2 bg-danger">
-            <p className="text-center">
-              Enviar a tu teléfono
-            </p>
+            <p className="text-center">Enviar a tu teléfono</p>
           </div>
 
           <div className="col-2 bg-white">
-            <p className="text-center">
-              Compartir
-            </p>
+            <p className="text-center">Compartir</p>
           </div>
         </div>
       </div>
