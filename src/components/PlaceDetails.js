@@ -12,7 +12,7 @@ const PlaceDetails = () => {
           <div className="col-2 bg-white text-center">
             <button className="btn btn-outline-primary rounded-circle circle">
               <div className="font-xs">
-                <i class="fas fa-directions"></i>
+                <i className="fas fa-directions"></i>
               </div>
             </button>
           </div>
@@ -20,7 +20,7 @@ const PlaceDetails = () => {
           <div className="col-2 bg-danger text-center">
             <button className="btn btn-outline-primary rounded-circle circle">
               <div className="font-xs">
-                <i class="far fa-bookmark"></i>
+                <i className="far fa-bookmark"></i>
               </div>
             </button>
           </div>
@@ -28,7 +28,7 @@ const PlaceDetails = () => {
           <div className="col-2 bg-warning text-center">
             <button className="btn btn-outline-primary rounded-circle circle">
               <div className="font-xs">
-                <i class="fas fa-map-marked-alt"></i>
+                <i className="fas fa-map-marked-alt"></i>
               </div>
             </button>
           </div>
@@ -36,7 +36,7 @@ const PlaceDetails = () => {
           <div className="col-2 bg-danger text-center">
             <button className="btn btn-outline-primary rounded-circle circle">
               <div className="font-xs">
-                <i class="fas fa-mobile-alt"></i>
+                <i className="fas fa-mobile-alt"></i>
               </div>
             </button>
           </div>
@@ -44,7 +44,7 @@ const PlaceDetails = () => {
           <div className="col-2 bg-white text-center">
             <button className="btn btn-outline-primary rounded-circle circle">
               <div className="font-xs">
-                <i class="fas fa-share-square"></i>
+                <i className="fas fa-share-square"></i>
               </div>
             </button>
           </div>
@@ -74,21 +74,65 @@ const PlaceDetails = () => {
       </div>
 
       <hr />
-      <ul>
-        <li>
-          <i class="fas fa-map-marker-alt"></i> Dirección
+      <ul className="list-group rounded-0">
+        <li className="list-group-item">
+          <div className="d-flex">
+            <div className="me-3">
+              <i className="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <span>Dirección</span>
+            </div>
+          </div>
         </li>
-        <li>
-          <i class="fas fa-globe"></i> Webpage
+
+        <li className="list-group-item">
+          <div className="d-flex">
+            <div className="me-3">
+              <i className="fas fa-globe"></i>
+            </div>
+            <div>
+              <span>Webpage</span>
+            </div>
+          </div>
         </li>
-        <li>
-          <i class="fas fa-phone-alt"></i> Phone
+
+        <li className="list-group-item">
+          <div className="d-flex justify-content-between">
+            <div className="d-flex">
+              <div className="me-3">
+                <i className="fas fa-phone-alt"></i>
+              </div>
+              <div>
+                <span>Teléfono</span>
+              </div>
+            </div>
+            <div>
+              <span className="badge bg-primary rounded-pill">14</span>
+            </div>
+          </div>
         </li>
-        <li>
-          <i class="fas fa-clock"></i> Horarios
+
+        <li className="list-group-item">
+          <div className="d-flex">
+            <div className="me-3">
+              <i className="fas fa-clock"></i>
+            </div>
+            <div>
+              <span>Horarios</span>
+            </div>
+          </div>
         </li>
-        <li>
-          <i class="far fa-save"></i> Guardar
+
+        <li className="list-group-item">
+          <div className="d-flex">
+            <div className="me-3">
+              <i className="far fa-save"></i>
+            </div>
+            <div>
+              <span>Guardar</span>
+            </div>
+          </div>
         </li>
       </ul>
       <hr />
