@@ -5,11 +5,15 @@ const PlaceDetails = () => {
   return (
     <div>
       <img src={img} className="img-fluid" alt="streetview" />
-      <h1> lugar nombre </h1>
+      <div className="container">
+      <div className="text-center">
+      <h1 className="mt-2"> nombre </h1>
+      </div>
+      </div>
       <hr />
       <div className="container">
-        <div className="row bg-success justify-content-center">
-          <div className="col-2 bg-white text-center">
+        <div className="row justify-content-center">
+          <div className="col-2 text-center">
             <button className="btn btn-outline-primary rounded-circle circle">
               <div className="font-xs">
                 <i className="fas fa-directions"></i>
@@ -17,7 +21,7 @@ const PlaceDetails = () => {
             </button>
           </div>
 
-          <div className="col-2 bg-danger text-center">
+          <div className="col-2 text-center">
             <button className="btn btn-outline-primary rounded-circle circle">
               <div className="font-xs">
                 <i className="far fa-bookmark"></i>
@@ -25,7 +29,7 @@ const PlaceDetails = () => {
             </button>
           </div>
 
-          <div className="col-2 bg-warning text-center">
+          <div className="col-2 text-center">
             <button className="btn btn-outline-primary rounded-circle circle">
               <div className="font-xs">
                 <i className="fas fa-map-marked-alt"></i>
@@ -33,7 +37,7 @@ const PlaceDetails = () => {
             </button>
           </div>
 
-          <div className="col-2 bg-danger text-center">
+          <div className="col-2 text-center">
             <button className="btn btn-outline-primary rounded-circle circle">
               <div className="font-xs">
                 <i className="fas fa-mobile-alt"></i>
@@ -41,7 +45,7 @@ const PlaceDetails = () => {
             </button>
           </div>
 
-          <div className="col-2 bg-white text-center">
+          <div className="col-2 text-center">
             <button className="btn btn-outline-primary rounded-circle circle">
               <div className="font-xs">
                 <i className="fas fa-share-square"></i>
@@ -50,24 +54,24 @@ const PlaceDetails = () => {
           </div>
         </div>
 
-        <div className="row bg-secondary justify-content-center">
-          <div className="col-2 bg-white">
+        <div className="row justify-content-center">
+          <div className="col-2">
             <p className="text-center">Cómo llegar</p>
           </div>
 
-          <div className="col-2 bg-danger">
+          <div className="col-2">
             <p className="text-center">Marcar</p>
           </div>
 
-          <div className="col-2 bg-warning">
+          <div className="col-2">
             <p className="text-center">Abrir en maps</p>
           </div>
 
-          <div className="col-2 bg-danger">
+          <div className="col-2">
             <p className="text-center">Enviar a tu teléfono</p>
           </div>
 
-          <div className="col-2 bg-white">
+          <div className="col-2">
             <p className="text-center">Compartir</p>
           </div>
         </div>
@@ -136,20 +140,6 @@ const PlaceDetails = () => {
         
       </ul>
       <hr />
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia
-        obcaecati eos temporibus neque aliquid recusandae voluptatibus eius
-        quaerat et consectetur, dolorum autem qui earum voluptates voluptate
-        expedita a officiis illo hic quos. Odio nostrum deserunt assumenda
-        fugiat officiis autem maxime nesciunt molestiae, nisi cumque, dolore
-        voluptates dolorum modi consectetur. Perspiciatis quaerat vitae sequi
-        porro assumenda labore necessitatibus obcaecati nisi quam consectetur
-        fugiat veniam similique atque odit sint, id hic accusantium repellat
-        laudantium ut! Voluptatibus corrupti, beatae, iure nam recusandae
-        minima, fugit magnam ducimus autem itaque repellat vitae? Ea deleniti
-        molestiae totam iusto optio, odit quis alias, repellendus perferendis,
-        ex similique?
-      </p>
     </div>
   );
 };
