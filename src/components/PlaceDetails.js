@@ -7,21 +7,18 @@ const PlaceDetails = () => {
       <img src={img} className="img-fluid" alt="streetview" />
       <h1> lugar nombre </h1>
       <hr />
-      <button>boton 1</button>
-      <button>boton 2</button>
-      <button>boton 3</button>
-      <button>boton 4</button>
-      <button>boton 5</button>
+      <button><i class="fas fa-directions"></i></button>
+      <button><i class="far fa-bookmark"></i></button>
+      <button><i class="fas fa-map-marked-alt"></i></button>
+      <button><i class="fas fa-mobile-alt"></i></button>
+      <button><i class="far fa-share-square"></i></button>
       <hr />
       <ul>
-        <li>icono - texto</li>
-        <li>icono - texto</li>
-        <li>icono - texto</li>
-        <li>icono - texto</li>
-        <li>icono - texto</li>
-        <li>icono - texto</li>
-        <li>icono - texto</li>
-        <li>icono - texto</li>
+        <li><i class="fas fa-map-marker-alt"></i> Dirección</li>
+        <li><i class="fas fa-globe"></i> Webpage</li>
+        <li><i class="fas fa-phone-alt"></i> Phone</li>
+        <li><i class="far fa-clock"></i> Horarios</li>
+        <li><i class="far fa-save"></i> Guardar</li>
       </ul>
       <hr />
       <p>
