@@ -7,20 +7,89 @@ const PlaceDetails = () => {
       <img src={img} className="img-fluid" alt="streetview" />
       <h1> lugar nombre </h1>
       <hr />
-      <div className='container d-flex justify-content-around'>
-      <a href="#" className="fs-4"><i class="fas fa-directions"></i></a>
-      <a href="#" className="fs-4"><i class="far fa-bookmark"></i></a>
-      <a href="#" className="fs-4"><i class="fas fa-map-marked-alt"></i></a>
-      <a href="#" className="fs-4"><i class="fas fa-mobile-alt"></i></a>
-      <a href="#" className="fs-4"><i class="fas fa-share-square"></i></a>
+      <div className="container">
+        <div className="row bg-success justify-content-center">
+          <div className="col-2 bg-white">
+            <button className="btn btn-outline-primary rounded-circle">
+              <i class="fas fa-directions"></i>
+            </button>
+          </div>
+
+          <div className="col-2 bg-danger">
+            <button className="btn btn-outline-primary rounded-circle">
+              <i class="far fa-bookmark"></i>
+            </button>
+          </div>
+
+          <div className="col-2 bg-warning">
+            <button className="btn btn-outline-primary rounded-circle">
+              <i class="fas fa-map-marked-alt"></i>
+            </button>
+          </div>
+
+          <div className="col-2 bg-danger">
+            <button className="btn btn-outline-primary rounded-circle">
+              <i class="fas fa-mobile-alt"></i>
+            </button>
+          </div>
+
+          <div className="col-2 bg-white">
+            <button className="btn btn-outline-primary rounded-circle">
+              <i class="fas fa-share-square"></i>
+            </button>
+          </div>
+        </div>
+
+        <div className="row bg-secondary justify-content-center">
+          <div className="col-2 bg-white">
+            <p className="text-center">
+              Cómo llegar
+            </p>
+          </div>
+
+          <div className="col-2 bg-danger">
+            <p className="text-center">
+            Marcar
+            </p>
+          </div>
+
+          <div className="col-2 bg-warning">
+            <p className="text-center">
+              Abrir en maps
+            </p>
+          </div>
+
+          <div className="col-2 bg-danger">
+            <p className="text-center">
+              Enviar a tu teléfono
+            </p>
+          </div>
+
+          <div className="col-2 bg-white">
+            <p className="text-center">
+              Compartir
+            </p>
+          </div>
+        </div>
       </div>
+
       <hr />
       <ul>
-        <li><i class="fas fa-map-marker-alt"></i> Dirección</li>
-        <li><i class="fas fa-globe"></i> Webpage</li>
-        <li><i class="fas fa-phone-alt"></i> Phone</li>
-        <li><i class="fas fa-clock"></i> Horarios</li>
-        <li><i class="far fa-save"></i> Guardar</li>
+        <li>
+          <i class="fas fa-map-marker-alt"></i> Dirección
+        </li>
+        <li>
+          <i class="fas fa-globe"></i> Webpage
+        </li>
+        <li>
+          <i class="fas fa-phone-alt"></i> Phone
+        </li>
+        <li>
+          <i class="fas fa-clock"></i> Horarios
+        </li>
+        <li>
+          <i class="far fa-save"></i> Guardar
+        </li>
       </ul>
       <hr />
       <p>
