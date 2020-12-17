@@ -2,6 +2,11 @@
   height: 100vh;
 }
 
+.details-page {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
 p {
   font-size: 10px;
 }
