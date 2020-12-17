@@ -146,22 +146,22 @@ const PlaceDetails = () => {
         <div className="collapse" id="collapseExample">
           <ul className="list-group">
             <li className="list-group-item border-start-0 border-end-0 rounded-0">
-              +449 444 4444
+              +449 444 4444 Zets, Ekrusel.
             </li>
             <li className="list-group-item border-start-0 border-end-0">
-              +555 555 5555
+              +555 555 5555 Anter, Gil.
             </li>
             <li className="list-group-item border-start-0 border-end-0">
-              +555 555 5555
+              +555 555 5555 Aboel, Vala.
             </li>
             <li className="list-group-item border-start-0 border-end-0">
-              +555 555 5555
+              +555 555 5555 Mond, Ren.
             </li>
             <li className="list-group-item border-start-0 border-end-0">
-              +555 555 5555
+              +555 555 5555 Tonts, Esten.
             </li>
             <li className="list-group-item border-start-0 border-end-0 rounded-0">
-              +555 555 5555
+              +555 555 5555 Ousem, Ract.
             </li>
           </ul>
         </div>
