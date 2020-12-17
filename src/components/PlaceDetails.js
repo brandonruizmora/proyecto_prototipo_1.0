@@ -4,6 +4,25 @@ import img from "../nyc-streets.jpg";
 const PlaceDetails = () => {
   return (
     <div className="details-page">
+      <div className="container-fluid ps-3 pe-1">
+        <form>
+          <div className="my-2 d-flex">
+            <input
+              type="text"
+              className="form-control border-0"
+              id="inputSearch"
+              aria-describedby="inputSearch"
+              
+            />
+            <button type="submit" className="btn btn-outline-primary border-0">
+            <i className="fas fa-search-location"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <hr className="mt-2" />
+
       <img src={img} className="img-fluid" alt="streetview" />
       <div className="container">
         <div className="text-center">
@@ -120,34 +139,32 @@ const PlaceDetails = () => {
             <div className="col-1">
               <span className="badge bg-primary rounded-pill">6</span>
             </div>
-            <div className="col-12">
-              
-            </div>
+            <div className="col-12"></div>
           </div>
         </li>
 
-        <div class="collapse" id="collapseExample">
-                  <ul className="list-group">
-                    <li className="list-group-item border-start-0 border-end-0 rounded-0">
-                    +449 444 4444
-                    </li>
-                    <li className="list-group-item border-start-0 border-end-0">
-                    +555 555 5555
-                    </li>
-                    <li className="list-group-item border-start-0 border-end-0">
-                    +555 555 5555
-                    </li>
-                    <li className="list-group-item border-start-0 border-end-0">
-                    +555 555 5555
-                    </li>
-                    <li className="list-group-item border-start-0 border-end-0">
-                    +555 555 5555
-                    </li>
-                    <li className="list-group-item border-start-0 border-end-0 rounded-0">
-                    +555 555 5555
-                    </li>
-                  </ul>
-              </div>
+        <div className="collapse" id="collapseExample">
+          <ul className="list-group">
+            <li className="list-group-item border-start-0 border-end-0 rounded-0">
+              +449 444 4444
+            </li>
+            <li className="list-group-item border-start-0 border-end-0">
+              +555 555 5555
+            </li>
+            <li className="list-group-item border-start-0 border-end-0">
+              +555 555 5555
+            </li>
+            <li className="list-group-item border-start-0 border-end-0">
+              +555 555 5555
+            </li>
+            <li className="list-group-item border-start-0 border-end-0">
+              +555 555 5555
+            </li>
+            <li className="list-group-item border-start-0 border-end-0 rounded-0">
+              +555 555 5555
+            </li>
+          </ul>
+        </div>
 
         <li className="list-group-item list-group-item-action border-0">
           <div className="row">
