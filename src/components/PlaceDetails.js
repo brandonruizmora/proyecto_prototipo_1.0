@@ -11,7 +11,7 @@ const PlaceDetails = () => {
       </div>
       </div>
       <hr />
-      <div className="container">
+      <div className="container-fluid p-0">
         <div className="row justify-content-center">
           <div className="col-2 text-center">
             <button className="btn btn-outline-primary rounded-circle circle">
@@ -80,7 +80,7 @@ const PlaceDetails = () => {
       <hr />
       <ul className="list-group rounded-0">
 
-        <li className="list-group-item">
+        <li className="list-group-item border-0">
           <div className="row">
             <div className="col-1 text-primary">
               <i className="fas fa-map-marker-alt"></i>
@@ -91,7 +91,7 @@ const PlaceDetails = () => {
           </div>
         </li>
 
-        <li className="list-group-item">
+        <li className="list-group-item border-0">
           <div className="row">
             <div className="col-1 text-primary">
               <i className="fas fa-globe"></i>
@@ -102,7 +102,7 @@ const PlaceDetails = () => {
           </div>
         </li>
 
-        <li className="list-group-item">
+        <li className="list-group-item border-0">
           <div className="row">
             <div className="col-1 text-primary">
               <i className="far fa-save"></i>
@@ -116,7 +116,7 @@ const PlaceDetails = () => {
           </div>
         </li>
 
-        <li className="list-group-item">
+        <li className="list-group-item border-0">
           <div className="row">
             <div className="col-1 text-primary">
               <i className="fas fa-clock"></i>
@@ -127,7 +127,7 @@ const PlaceDetails = () => {
           </div>
         </li>
 
-        <li className="list-group-item">
+        <li className="list-group-item border-0">
           <div className="row">
             <div className="col-1 text-primary">
               <i className="far fa-save"></i>
@@ -140,6 +140,12 @@ const PlaceDetails = () => {
         
       </ul>
       <hr />
+
+      <div className="container">
+      <p className="fs-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure quos unde ratione voluptatum odit quo quaerat, porro cumque ut nihil error, laborum eum itaque, eos quis numquam architecto tempora. Odit!</p>
+      <p className="fs-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure quos unde ratione voluptatum odit quo quaerat, porro cumque ut nihil error, laborum eum itaque, eos quis numquam architecto tempora. Odit!</p>
+      </div>
+
     </div>
   );
 };
