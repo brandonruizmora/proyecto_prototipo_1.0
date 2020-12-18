@@ -1,24 +1,31 @@
 import React from "react";
 import img from "../nyc-streets.jpg";
 
-const PlaceDetails = () => {
+let searchItem = '';
+
+const handleChange = ( event ) => {
+  console.log(event.target.value)
+  searchItem = event.target.value;
+};
+
+const PlaceDetails = ({ handleSearch }) => {
   return (
     <div className="details-page">
       <div className="container-fluid ps-3 pe-1">
-        <form>
           <div className="my-2 d-flex">
             <input
               type="text"
               className="form-control border-0"
               id="inputSearch"
               aria-describedby="inputSearch"
-              
+              onChange={ handleChange }
             />
-            <button type="submit" className="btn btn-outline-primary border-0">
+            <button className="btn btn-outline-primary border-0"
+            onClick={ () => handleSearch(searchItem) }
+            >
             <i className="fas fa-search-location"></i>
             </button>
           </div>
-        </form>
       </div>
 
       <hr className="mt-2" />
