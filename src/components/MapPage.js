@@ -1,5 +1,10 @@
 import React from "react";
-import { GoogleMap, LoadScript, MarkerClusterer, Marker } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  LoadScript,
+  MarkerClusterer,
+  Marker,
+} from "@react-google-maps/api";
 import "../App.css";
 
 const containerStyle = {
@@ -14,19 +19,25 @@ const center = {
 
 const options = {
   imagePath:
-    'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m', // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
+    "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m", // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
 };
 
 const MapPage = ({ locations }) => {
-  console.log('locations',locations)
+
   return (
-    <div>
-      <LoadScript googleMapsApiKey="AIzaSyAG5AlZFaqqNd0ao3n5zNCESsY-GKyiGpE">
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={4}>
+
+      <LoadScript
+        googleMapsApiKey="AIzaSyAG5AlZFaqqNd0ao3n5zNCESsY-GKyiGpE"
+      >
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={ 4 }
+        >
           <MarkerClusterer options={options}>
             {(clusterer) =>
               locations.map((individualItem, index) => {
-                const { location, establecimiento } = individualItem;
+                const { location } = individualItem;
                 const { raw } = location;
                 const [lat, lng] = raw.split(",");
                 const latlng = {
@@ -34,18 +45,14 @@ const MapPage = ({ locations }) => {
                   lng: parseFloat(lng, 10),
                 };
                 return (
-                  <Marker
-                    key={ index }
-                    position={ latlng }
-                    clusterer={ clusterer }
-                  />
+                  <Marker key={index} position={latlng} clusterer={clusterer} />
                 );
               })
             }
           </MarkerClusterer>
         </GoogleMap>
       </LoadScript>
-    </div>
+ 
   );
 };
 
