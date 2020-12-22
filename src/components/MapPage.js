@@ -22,7 +22,7 @@ const options = {
     "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m", // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
 };
 
-const MapPage = ({ locations, onLoad, onUnmount }) => {
+const MapPage = ({ locations, onLoad, onUnmount, handleMarkerClic }) => {
   return (
     <LoadScript googleMapsApiKey="AIzaSyAG5AlZFaqqNd0ao3n5zNCESsY-GKyiGpE">
       <GoogleMap
@@ -43,7 +43,12 @@ const MapPage = ({ locations, onLoad, onUnmount }) => {
                 lng: parseFloat(lng, 10),
               };
               return (
-                <Marker key={index} position={latlng} clusterer={clusterer} />
+                <Marker 
+                  key={index} 
+                  position={latlng} 
+                  clusterer={clusterer} 
+                  onClick={() => handleMarkerClic(individualItem) }
+                />
               );
             })
           }

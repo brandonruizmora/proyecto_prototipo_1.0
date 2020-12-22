@@ -10,8 +10,8 @@ function App() {
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(
-      new window.google.maps.LatLng(37,-102.2842905972648),
-       new window.google.maps.LatLng(5, -102.2842905972648)
+      new window.google.maps.LatLng(37, -102.2842905972648),
+      new window.google.maps.LatLng(5, -102.2842905972648)
     );
     map.fitBounds(bounds);
     setMap(map);
@@ -60,6 +60,108 @@ function App() {
     elasticSearch(item);
   };
 
+  /*Start placedetails */
+
+  const handlePlaceDetailsData = ({ status, result }) => {
+    console.log(status)
+    console.log(result)
+    if (status === "OK") {
+      const {
+        address_components,
+        international_phone_number,
+        name,
+        website,
+        url,
+      } = result;
+      const [...pos] = address_components;
+      const data = {
+        establecimiento: {
+          raw: name,
+        },
+        telefono: {
+          raw: international_phone_number,
+        },
+        website: {
+          raw: website,
+        },
+        google_address: {
+          raw: pos,
+        },
+        url_google: {
+          raw: url,
+        },
+      };
+      // setPlaceData(data);
+      console.log(data);
+    }
+  };
+
+  const placedetails = (placeID) => {
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const url =
+      "https://maps.googleapis.com/maps/api/place/details/json?place_id=" +
+      placeID +
+      "&fields=name,rating,international_phone_number,website,address_component,type,url&key=AIzaSyAG5AlZFaqqNd0ao3n5zNCESsY-GKyiGpE";
+    fetch(proxyurl + url, requestOptions)
+      .then((response) => response.json())
+      .then((result) => handlePlaceDetailsData(result))
+      .catch((error) => console.log("error", error));
+  };
+
+  /*END placedetails */
+
+  /*START nearbysearch */
+
+  const handleResults = ({ status, results }) => {
+    console.log(status)
+    console.log(results)
+    if (status === "OK") {
+      const [arreglo0] = results;
+      const { place_id } = arreglo0;
+      placedetails(place_id);
+    }
+  };
+
+  const nearbysearch = (location, name) => {
+    console.log(location)
+    console.log(name)
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const url =
+      "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
+      location +
+      "&radius=250&keyword=" +
+      name +
+      "&key=AIzaSyAG5AlZFaqqNd0ao3n5zNCESsY-GKyiGpE";
+
+    fetch(proxyurl + url, requestOptions)
+      .then((response) => response.json())
+      .then((result) => handleResults(result))
+      .catch((error) => console.log("error", error));
+  };
+
+  /*END nearbysearch */
+
+  const handleMarkerClic = (markerPlace) => {
+    console.log(markerPlace)
+    // markerPlace.location.raw
+    // markerPlace.establecimiento.raw
+    nearbysearch(markerPlace.location.raw, markerPlace.establecimiento.raw);
+  };
+
   return (
     <div className="container-fluid">
       <div className="row full-height">
@@ -71,6 +173,7 @@ function App() {
             locations={locations}
             onLoad={onLoad}
             onUnmount={onUnmount}
+            handleMarkerClic={handleMarkerClic}
           />
         </div>
       </div>
