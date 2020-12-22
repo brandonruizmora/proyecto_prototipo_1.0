@@ -1,31 +1,51 @@
 import React from "react";
 import img from "../nyc-streets.jpg";
 
-let searchItem = '';
+let searchItem = "";
 
-const handleChange = ( event ) => {
-  console.log(event.target.value)
+const handleChange = (event) => {
+  console.log(event.target.value);
   searchItem = event.target.value;
 };
 
-const PlaceDetails = ({ handleSearch }) => {
+let placeDireccion = "";
+
+const PlaceDetails = ({ handleSearch, placeData }) => {
+  console.log("placedata", placeData);
+  const dire =
+    placeData.tipo_de_vialidad?.raw +
+    " " +
+    placeData.vialidad?.raw +
+    " " +
+    placeData.numero_exterior?.raw +
+    ", " +
+    placeData.asentamiento?.raw +
+    ", " +
+    placeData.codigo_postal?.raw +
+    " " +
+    placeData.municipio?.raw +
+    " " +
+    placeData.localidad?.raw +
+    ".";
+  placeDireccion = dire;
   return (
     <div className="details-page">
       <div className="container-fluid ps-3 pe-1">
-          <div className="my-2 d-flex">
-            <input
-              type="text"
-              className="form-control border-0"
-              id="inputSearch"
-              aria-describedby="inputSearch"
-              onChange={ handleChange }
-            />
-            <button className="btn btn-outline-primary border-0"
-            onClick={ () => handleSearch(searchItem) }
-            >
+        <div className="my-2 d-flex">
+          <input
+            type="text"
+            className="form-control border-0"
+            id="inputSearch"
+            aria-describedby="inputSearch"
+            onChange={handleChange}
+          />
+          <button
+            className="btn btn-outline-primary border-0"
+            onClick={() => handleSearch(searchItem)}
+          >
             <i className="fas fa-search-location"></i>
-            </button>
-          </div>
+          </button>
+        </div>
       </div>
 
       <hr className="mt-2" />
@@ -33,7 +53,10 @@ const PlaceDetails = ({ handleSearch }) => {
       <img src={img} className="img-fluid" alt="streetview" />
       <div className="container">
         <div className="text-center">
-          <h1 className="mt-2"> nombre </h1>
+          <h1 className="mt-2">
+            {" "}
+            {placeData.establecimiento?.raw || "nombre"}{" "}
+          </h1>
         </div>
       </div>
       <hr />
@@ -112,7 +135,7 @@ const PlaceDetails = ({ handleSearch }) => {
               <i className="fas fa-map-marker-alt"></i>
             </div>
             <div className="col-11">
-              <span>Dirección</span>
+              <span>{placeDireccion === '' ? placeDireccion : "Dirección"}</span>
             </div>
           </div>
         </li>
@@ -123,7 +146,7 @@ const PlaceDetails = ({ handleSearch }) => {
               <i className="fas fa-globe"></i>
             </div>
             <div className="col-11">
-              <span>Página</span>
+              <span>{placeData.website?.raw || "Página"}</span>
             </div>
           </div>
         </li>
@@ -141,7 +164,7 @@ const PlaceDetails = ({ handleSearch }) => {
               <i className="fas fa-phone-alt"></i>
             </div>
             <div className="col-9">
-              <span>Teléfono</span>
+              <span>{placeData.telefono?.raw || "Teléfono"}</span>
             </div>
             <div className="col-1">
               <span className="badge bg-primary rounded-pill">6</span>
