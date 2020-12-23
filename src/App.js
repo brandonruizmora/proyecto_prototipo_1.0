@@ -158,10 +158,11 @@ function App() {
   /*END nearbysearch */
 
   const handleMarkerClic = (markerPlace) => {
-    console.log(markerPlace)
+    console.log('markerPlace',markerPlace)
+    setPlaceData(markerPlace);
     // markerPlace.location.raw
     // markerPlace.establecimiento.raw
-    nearbysearch(markerPlace.location.raw, markerPlace.establecimiento.raw);
+    // nearbysearch(markerPlace.location.raw, markerPlace.establecimiento.raw);
   };
 
   return (
@@ -170,7 +171,7 @@ function App() {
         <div className="order-1 order-sm-0 col-sm-6 col-md-5 col-lg-4 mx-0 px-0">
           <PlaceDetails 
             handleSearch={handleSearch}
-            placeData={ placeData }  
+            placeData={placeData}  
           />
         </div>
         <div className="order-0 order-sm-1 col-sm-6 col-md-7 col-lg-8 mx-0 px-0">

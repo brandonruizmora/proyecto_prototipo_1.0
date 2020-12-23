@@ -12,22 +12,25 @@ let placeDireccion = "";
 
 const PlaceDetails = ({ handleSearch, placeData }) => {
   console.log("placedata", placeData);
+  const tipo_de_vialidad = placeData.tipo_de_vialidad?.raw === undefined ? "" : placeData.tipo_de_vialidad?.raw;
+  const vialidad = placeData.vialidad?.raw === undefined ? "" : placeData.vialidad?.raw;
+  const numero_exterior = placeData.numero_exterior?.raw === undefined ? "" : placeData.numero_exterior?.raw;
+  let asentamiento = placeData.asentamiento?.raw === undefined ? "" : placeData.asentamiento?.raw;
+  asentamiento = asentamiento === 'NINGUNO' ? '' : asentamiento;
+  const codigo_postal = placeData.codigo_postal?.raw === undefined ? "" : placeData.codigo_postal?.raw;
+  const municipio = placeData.municipio?.raw === undefined ? "" : placeData.municipio?.raw;
+  const localidad = placeData.localidad?.raw === undefined ? "" : placeData.localidad?.raw;
   const dire =
-    placeData.tipo_de_vialidad?.raw +
-    " " +
-    placeData.vialidad?.raw +
-    " " +
-    placeData.numero_exterior?.raw +
-    ", " +
-    placeData.asentamiento?.raw +
-    ", " +
-    placeData.codigo_postal?.raw +
-    " " +
-    placeData.municipio?.raw +
-    " " +
-    placeData.localidad?.raw +
-    ".";
+    tipo_de_vialidad + " " + 
+    vialidad + " " + 
+    numero_exterior + ", " +
+    asentamiento + ", " +
+    codigo_postal + ", " +
+    municipio + ", " +
+    localidad + ". ";
   placeDireccion = dire;
+  console.log(dire);
+  console.log(placeDireccion);
   return (
     <div className="details-page">
       <div className="container-fluid ps-3 pe-1">
@@ -53,10 +56,7 @@ const PlaceDetails = ({ handleSearch, placeData }) => {
       <img src={img} className="img-fluid" alt="streetview" />
       <div className="container">
         <div className="text-center">
-          <h1 className="mt-2">
-            {" "}
-            {placeData.establecimiento?.raw || "nombre"}{" "}
-          </h1>
+          <h1 className="mt-2">{placeData.establecimiento?.raw || "nombre"}</h1>
         </div>
       </div>
       <hr />
@@ -135,7 +135,9 @@ const PlaceDetails = ({ handleSearch, placeData }) => {
               <i className="fas fa-map-marker-alt"></i>
             </div>
             <div className="col-11">
-              <span>{placeDireccion === '' ? placeDireccion : "Dirección"}</span>
+              <span>
+                {placeDireccion === "  , , , , . " ? "Dirección" : placeDireccion}
+              </span>
             </div>
           </div>
         </li>
@@ -146,7 +148,7 @@ const PlaceDetails = ({ handleSearch, placeData }) => {
               <i className="fas fa-globe"></i>
             </div>
             <div className="col-11">
-              <span>{placeData.website?.raw || "Página"}</span>
+              <span>{placeData.www?.raw || "Sin página"}</span>
             </div>
           </div>
         </li>
@@ -164,7 +166,7 @@ const PlaceDetails = ({ handleSearch, placeData }) => {
               <i className="fas fa-phone-alt"></i>
             </div>
             <div className="col-9">
-              <span>{placeData.telefono?.raw || "Teléfono"}</span>
+              <span>{placeData.telefono?.raw || "Sin teléfono"}</span>
             </div>
             <div className="col-1">
               <span className="badge bg-primary rounded-pill">6</span>
@@ -197,15 +199,15 @@ const PlaceDetails = ({ handleSearch, placeData }) => {
         </div>
 
         <li className="list-group-item list-group-item-action border-0">
-          <div className="row">
-            <div className="col-1 text-primary">
-              <i className="fas fa-clock"></i>
-            </div>
-            <div className="col-11">
-              <span>Horarios</span>
-            </div>
+        <div className="row">
+          <div className="col-1 text-primary">
+            <i className="fas fa-clock"></i>
           </div>
-        </li>
+          <div className="col-11">
+            <span>Sin horarios</span>
+          </div>
+        </div>
+      </li>
 
         <li className="list-group-item list-group-item-action border-0">
           <div className="row">
@@ -222,14 +224,7 @@ const PlaceDetails = ({ handleSearch, placeData }) => {
 
       <div className="container">
         <p className="fs-6">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure quos
-          unde ratione voluptatum odit quo quaerat, porro cumque ut nihil error,
-          laborum eum itaque, eos quis numquam architecto tempora. Odit!
-        </p>
-        <p className="fs-6">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure quos
-          unde ratione voluptatum odit quo quaerat, porro cumque ut nihil error,
-          laborum eum itaque, eos quis numquam architecto tempora. Odit!
+          {placeData.actividad?.raw === undefined ? '' : placeData.actividad?.raw}
         </p>
       </div>
     </div>

@@ -35,6 +35,7 @@ const MapPage = ({ locations, onLoad, onUnmount, handleMarkerClic }) => {
         <MarkerClusterer options={options}>
           {(clusterer) =>
             locations.map((individualItem, index) => {
+              // console.log('indivitualItem',individualItem)
               const { location } = individualItem;
               const { raw } = location;
               const [lat, lng] = raw.split(",");
