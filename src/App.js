@@ -161,6 +161,12 @@ function App() {
   const handleMarkerClic = (markerPlace) => {
     console.log("markerPlace", markerPlace);
     setPlaceData(markerPlace);
+    const column_details = document.getElementById('details-column');
+    const column_map = document.getElementById('map-column');
+    column_details.className="order-1 order-sm-0 col-sm-6 col-md-5 col-lg-4 mx-0 px-0 detailsclass";
+    column_map.className="order-0 order-sm-1 col-sm-6 col-md-7 col-lg-8 mx-0 px-0";
+    console.log('col_det',column_details)
+    console.log('col_map',column_map)
     // markerPlace.location.raw
     // markerPlace.establecimiento.raw
     // nearbysearch(markerPlace.location.raw, markerPlace.establecimiento.raw);
@@ -174,10 +180,10 @@ function App() {
         />
       </div>
       <div className="row full-height">
-        <div className="order-1 order-sm-0 col-sm-6 col-md-5 col-lg-4 mx-0 px-0">
-          <PlaceDetails placeData={placeData} hidden />
+        <div className="d-none" id="details-column">
+          <PlaceDetails placeData={placeData} />
         </div>
-        <div className="order-0 order-sm-1 col-sm-6 col-md-7 col-lg-8 mx-0 px-0">
+        <div className="col-12 px-0" id="map-column">
           <MapPage
             locations={locations}
             onLoad={onLoad}
