@@ -19,3 +19,7 @@ p {
 .font-xs {
   font-size: 14px;
 }
+
+.over {
+  z-index: 1;
+}

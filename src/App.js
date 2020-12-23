@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import SearchBox from "./components/SearchBox";
 import PlaceDetails from "./components/PlaceDetails";
 import MapPage from "./components/MapPage";
 
@@ -8,7 +9,7 @@ function App() {
 
   const [map, setMap] = React.useState(null);
 
-  const [ placeData, setPlaceData ] = useState({});
+  const [placeData, setPlaceData] = useState({});
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(
@@ -57,7 +58,7 @@ function App() {
       .catch((error) => console.log("error", error));
   };
 
-  const handleSearch = (item) => {
+  const handleSearchItem = (item) => {
     console.log(item);
     elasticSearch(item);
   };
@@ -65,8 +66,8 @@ function App() {
   /*Start placedetails */
 
   const handlePlaceDetailsData = ({ status, result }) => {
-    console.log(status)
-    console.log(result)
+    console.log(status);
+    console.log(result);
     if (status === "OK") {
       const {
         address_components,
@@ -120,8 +121,8 @@ function App() {
   /*START nearbysearch */
 
   const handleResults = ({ status, results }) => {
-    console.log(status)
-    console.log(results)
+    console.log(status);
+    console.log(results);
     if (status === "OK") {
       const [arreglo0] = results;
       const { place_id } = arreglo0;
@@ -130,8 +131,8 @@ function App() {
   };
 
   const nearbysearch = (location, name) => {
-    console.log(location)
-    console.log(name)
+    console.log(location);
+    console.log(name);
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -158,7 +159,7 @@ function App() {
   /*END nearbysearch */
 
   const handleMarkerClic = (markerPlace) => {
-    console.log('markerPlace',markerPlace)
+    console.log("markerPlace", markerPlace);
     setPlaceData(markerPlace);
     // markerPlace.location.raw
     // markerPlace.establecimiento.raw
@@ -167,12 +168,14 @@ function App() {
 
   return (
     <div className="container-fluid">
+      <div className="border rounded-end position-absolute top-0 start-0 bg-white over col-10 col-sm-6 col-md-5 col-lg-4">
+        <SearchBox 
+          handleSearchItem={handleSearchItem} 
+        />
+      </div>
       <div className="row full-height">
         <div className="order-1 order-sm-0 col-sm-6 col-md-5 col-lg-4 mx-0 px-0">
-          <PlaceDetails 
-            handleSearch={handleSearch}
-            placeData={placeData}  
-          />
+          <PlaceDetails placeData={placeData} hidden />
         </div>
         <div className="order-0 order-sm-1 col-sm-6 col-md-7 col-lg-8 mx-0 px-0">
           <MapPage

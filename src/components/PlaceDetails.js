@@ -1,13 +1,6 @@
 import React from "react";
 import img from "../nyc-streets.jpg";
 
-let searchItem = "";
-
-const handleChange = (event) => {
-  console.log(event.target.value);
-  searchItem = event.target.value;
-};
-
 let placeDireccion = "";
 
 const PlaceDetails = ({ handleSearch, placeData }) => {
@@ -33,25 +26,6 @@ const PlaceDetails = ({ handleSearch, placeData }) => {
   console.log(placeDireccion);
   return (
     <div className="details-page">
-      <div className="container-fluid ps-3 pe-1">
-        <div className="my-2 d-flex">
-          <input
-            type="text"
-            className="form-control border-0"
-            id="inputSearch"
-            aria-describedby="inputSearch"
-            onChange={handleChange}
-          />
-          <button
-            className="btn btn-outline-primary border-0"
-            onClick={() => handleSearch(searchItem)}
-          >
-            <i className="fas fa-search-location"></i>
-          </button>
-        </div>
-      </div>
-
-      <hr className="mt-2" />
 
       <img src={img} className="img-fluid" alt="streetview" />
       <div className="container">
