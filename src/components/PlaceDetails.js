@@ -3,7 +3,7 @@ import img from "../nyc-streets.jpg";
 
 let placeDireccion = "";
 
-const PlaceDetails = ({ handleSearch, elasticData, googleData }) => {
+const PlaceDetails = ({ elasticData, googleData }) => {
   console.log("elasticData", elasticData);
   console.log("googleData", googleData);
   const tipo_de_vialidad = elasticData.tipo_de_vialidad?.raw === undefined ? "" : elasticData.tipo_de_vialidad?.raw;
@@ -23,8 +23,6 @@ const PlaceDetails = ({ handleSearch, elasticData, googleData }) => {
     municipio + ", " +
     localidad + ". ";
   placeDireccion = dire;
-  console.log(dire);
-  console.log(placeDireccion);
   return (
     <div className="details-page">
 

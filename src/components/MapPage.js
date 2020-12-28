@@ -19,7 +19,7 @@ const center = {
 
 const options = {
   imagePath:
-    "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m", // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
+    "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
 };
 
 const MapPage = ({ locations, onLoad, onUnmount, handleMarkerClic }) => {
@@ -35,7 +35,6 @@ const MapPage = ({ locations, onLoad, onUnmount, handleMarkerClic }) => {
         <MarkerClusterer options={options}>
           {(clusterer) =>
             locations.map((individualItem, index) => {
-              // console.log('indivitualItem',individualItem)
               const { location } = individualItem;
               const { raw } = location;
               const [lat, lng] = raw.split(",");

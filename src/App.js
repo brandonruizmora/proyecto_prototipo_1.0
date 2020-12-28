@@ -26,7 +26,6 @@ function App() {
   }, []);
 
   const handleResponseElastic = ({ results }) => {
-    console.log(results);
     setLocations(results);
     map.setZoom(4);
     const center = {
@@ -60,7 +59,6 @@ function App() {
   };
 
   const handleSearchItem = (item) => {
-    console.log(item);
     elasticSearch(item);
   };
 
@@ -132,8 +130,6 @@ function App() {
   };
 
   const nearbysearch = (location, name) => {
-    console.log(location);
-    console.log(name);
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -160,17 +156,12 @@ function App() {
   /*END nearbysearch */
 
   const handleMarkerClic = (markerPlace) => {
-    console.log("markerPlace", markerPlace);
     setElasticData(markerPlace);
     setGoogleData(markerPlace);
     const column_details = document.getElementById('details-column');
     const column_map = document.getElementById('map-column');
     column_details.className="order-1 order-sm-0 col-sm-6 col-md-5 col-lg-4 mx-0 px-0 detailsclass";
     column_map.className="order-0 order-sm-1 col-sm-6 col-md-7 col-lg-8 mx-0 px-0";
-    console.log('col_det',column_details)
-    console.log('col_map',column_map)
-    // markerPlace.location.raw
-    // markerPlace.establecimiento.raw
     nearbysearch(markerPlace.location.raw, markerPlace.establecimiento.raw);
   };
 

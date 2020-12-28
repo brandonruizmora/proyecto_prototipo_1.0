@@ -3,7 +3,6 @@ import React from "react";
 let searchItem = "";
 
 const handleChangeInput = (event) => {
-  console.log(event.target.value);
   searchItem = event.target.value;
 };
 
