@@ -3,16 +3,17 @@ import img from "../nyc-streets.jpg";
 
 let placeDireccion = "";
 
-const PlaceDetails = ({ handleSearch, placeData }) => {
-  console.log("placedata", placeData);
-  const tipo_de_vialidad = placeData.tipo_de_vialidad?.raw === undefined ? "" : placeData.tipo_de_vialidad?.raw;
-  const vialidad = placeData.vialidad?.raw === undefined ? "" : placeData.vialidad?.raw;
-  const numero_exterior = placeData.numero_exterior?.raw === undefined ? "" : placeData.numero_exterior?.raw;
-  let asentamiento = placeData.asentamiento?.raw === undefined ? "" : placeData.asentamiento?.raw;
+const PlaceDetails = ({ handleSearch, elasticData, googleData }) => {
+  console.log("elasticData", elasticData);
+  console.log("googleData", googleData);
+  const tipo_de_vialidad = elasticData.tipo_de_vialidad?.raw === undefined ? "" : elasticData.tipo_de_vialidad?.raw;
+  const vialidad = elasticData.vialidad?.raw === undefined ? "" : elasticData.vialidad?.raw;
+  const numero_exterior = elasticData.numero_exterior?.raw === undefined ? "" : elasticData.numero_exterior?.raw;
+  let asentamiento = elasticData.asentamiento?.raw === undefined ? "" : elasticData.asentamiento?.raw;
   asentamiento = asentamiento === 'NINGUNO' ? '' : asentamiento;
-  const codigo_postal = placeData.codigo_postal?.raw === undefined ? "" : placeData.codigo_postal?.raw;
-  const municipio = placeData.municipio?.raw === undefined ? "" : placeData.municipio?.raw;
-  const localidad = placeData.localidad?.raw === undefined ? "" : placeData.localidad?.raw;
+  const codigo_postal = elasticData.codigo_postal?.raw === undefined ? "" : elasticData.codigo_postal?.raw;
+  const municipio = elasticData.municipio?.raw === undefined ? "" : elasticData.municipio?.raw;
+  const localidad = elasticData.localidad?.raw === undefined ? "" : elasticData.localidad?.raw;
   const dire =
     tipo_de_vialidad + " " + 
     vialidad + " " + 
@@ -30,7 +31,7 @@ const PlaceDetails = ({ handleSearch, placeData }) => {
       <img src={img} className="img-fluid" alt="streetview" />
       <div className="container">
         <div className="text-center">
-          <h1 className="mt-2">{placeData.establecimiento?.raw || "nombre"}</h1>
+          <h1 className="mt-2">{elasticData.establecimiento?.raw || "nombre"}</h1>
         </div>
       </div>
       <hr />
@@ -122,7 +123,7 @@ const PlaceDetails = ({ handleSearch, placeData }) => {
               <i className="fas fa-globe"></i>
             </div>
             <div className="col-11">
-              <span>{placeData.www?.raw || "Sin página"}</span>
+              <span>{elasticData.www?.raw || "Sin página"}</span>
             </div>
           </div>
         </li>
@@ -140,7 +141,7 @@ const PlaceDetails = ({ handleSearch, placeData }) => {
               <i className="fas fa-phone-alt"></i>
             </div>
             <div className="col-9">
-              <span>{placeData.telefono?.raw || "Sin teléfono"}</span>
+              <span>{elasticData.telefono?.raw || "Sin teléfono"}</span>
             </div>
             <div className="col-1">
               <span className="badge bg-primary rounded-pill">6</span>
@@ -198,7 +199,7 @@ const PlaceDetails = ({ handleSearch, placeData }) => {
 
       <div className="container">
         <p className="fs-6">
-          {placeData.actividad?.raw === undefined ? '' : placeData.actividad?.raw}
+          {elasticData.actividad?.raw === undefined ? '' : elasticData.actividad?.raw}
         </p>
       </div>
     </div>

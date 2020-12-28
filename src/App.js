@@ -9,7 +9,8 @@ function App() {
 
   const [map, setMap] = React.useState(null);
 
-  const [placeData, setPlaceData] = useState({});
+  const [googleData, setGoogleData] = useState({});
+  const [elasticData, setElasticData] = useState({});
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(
@@ -67,7 +68,7 @@ function App() {
 
   const handlePlaceDetailsData = ({ status, result }) => {
     console.log(status);
-    console.log(result);
+    console.log("detailsgoogle",result);
     if (status === "OK") {
       const {
         address_components,
@@ -94,7 +95,7 @@ function App() {
           raw: url,
         },
       };
-      setPlaceData(data);
+      setGoogleData(data);
       console.log(data);
     }
   };
@@ -160,7 +161,8 @@ function App() {
 
   const handleMarkerClic = (markerPlace) => {
     console.log("markerPlace", markerPlace);
-    setPlaceData(markerPlace);
+    setElasticData(markerPlace);
+    setGoogleData(markerPlace);
     const column_details = document.getElementById('details-column');
     const column_map = document.getElementById('map-column');
     column_details.className="order-1 order-sm-0 col-sm-6 col-md-5 col-lg-4 mx-0 px-0 detailsclass";
@@ -169,7 +171,7 @@ function App() {
     console.log('col_map',column_map)
     // markerPlace.location.raw
     // markerPlace.establecimiento.raw
-    // nearbysearch(markerPlace.location.raw, markerPlace.establecimiento.raw);
+    nearbysearch(markerPlace.location.raw, markerPlace.establecimiento.raw);
   };
 
   return (
@@ -181,7 +183,7 @@ function App() {
       </div>
       <div className="row full-height">
         <div className="d-none" id="details-column">
-          <PlaceDetails placeData={placeData} />
+          <PlaceDetails googleData={ googleData } elasticData={ elasticData } />
         </div>
         <div className="col-12 px-0" id="map-column">
           <MapPage
