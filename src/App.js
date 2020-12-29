@@ -65,17 +65,17 @@ function App() {
   /*Start placedetails */
 
   const handlePlaceDetailsData = ({ status, result }) => {
-    console.log(status);
+    console.log('placedetails status',status);
     console.log("detailsgoogle",result);
     if (status === "OK") {
       const {
-        address_components,
+        formatted_address,
         international_phone_number,
         name,
         website,
         url,
       } = result;
-      const [...pos] = address_components;
+      const [...pos] = formatted_address;
       const data = {
         establecimiento: {
           raw: name,
@@ -108,7 +108,7 @@ function App() {
     const url =
       "https://maps.googleapis.com/maps/api/place/details/json?place_id=" +
       placeID +
-      "&fields=name,rating,international_phone_number,website,address_component,type,url&key=AIzaSyAG5AlZFaqqNd0ao3n5zNCESsY-GKyiGpE";
+      "&fields=name,url,formatted_address,website,formatted_phone_number,rating,international_phone_number,type&key=AIzaSyAG5AlZFaqqNd0ao3n5zNCESsY-GKyiGpE";
     fetch(proxyurl + url, requestOptions)
       .then((response) => response.json())
       .then((result) => handlePlaceDetailsData(result))
@@ -120,7 +120,7 @@ function App() {
   /*START nearbysearch */
 
   const handleResults = ({ status, results }) => {
-    console.log(status);
+    console.log('nearbysearch status',status);
     console.log(results);
     if (status === "OK") {
       const [arreglo0] = results;

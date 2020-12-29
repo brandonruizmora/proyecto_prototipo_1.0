@@ -4,8 +4,8 @@ import img from "../nyc-streets.jpg";
 let placeDireccion = "";
 
 const PlaceDetails = ({ elasticData, googleData }) => {
-  console.log("elasticData", elasticData);
-  console.log("googleData", googleData);
+  // console.log("elasticData", elasticData);
+  // console.log("googleData", googleData);
   const tipo_de_vialidad = elasticData.tipo_de_vialidad?.raw === undefined ? "" : elasticData.tipo_de_vialidad?.raw;
   const vialidad = elasticData.vialidad?.raw === undefined ? "" : elasticData.vialidad?.raw;
   const numero_exterior = elasticData.numero_exterior?.raw === undefined ? "" : elasticData.numero_exterior?.raw;
