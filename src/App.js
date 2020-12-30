@@ -66,35 +66,32 @@ function App() {
 
   const handlePlaceDetailsData = ({ status, result }) => {
     console.log('placedetails status',status);
-    console.log("detailsgoogle",result);
     if (status === "OK") {
       const {
-        formatted_address,
-        international_phone_number,
         name,
-        website,
         url,
+        formatted_address,
+        website,
+        formatted_phone_number,
       } = result;
-      const [...pos] = formatted_address;
       const data = {
         establecimiento: {
           raw: name,
         },
         telefono: {
-          raw: international_phone_number,
+          raw: formatted_phone_number,
         },
         website: {
           raw: website,
         },
         google_address: {
-          raw: pos,
+          raw: formatted_address,
         },
         url_google: {
           raw: url,
         },
       };
       setGoogleData(data);
-      console.log(data);
     }
   };
 
@@ -121,7 +118,6 @@ function App() {
 
   const handleResults = ({ status, results }) => {
     console.log('nearbysearch status',status);
-    console.log(results);
     if (status === "OK") {
       const [arreglo0] = results;
       const { place_id } = arreglo0;
