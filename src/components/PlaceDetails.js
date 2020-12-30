@@ -3,33 +3,93 @@ import img from "../nyc-streets.jpg";
 
 let placeDireccion = "";
 
+let establecimiento = "";
+let googleMapsURL = "";
+let direccion = "";
+let paginaWeb = "";
+let telefono = "";
+let horarios = "";
+
 const PlaceDetails = ({ elasticData, googleData }) => {
-  // console.log("elasticData", elasticData);
-  // console.log("googleData", googleData);
-  const tipo_de_vialidad = elasticData.tipo_de_vialidad?.raw === undefined ? "" : elasticData.tipo_de_vialidad?.raw;
-  const vialidad = elasticData.vialidad?.raw === undefined ? "" : elasticData.vialidad?.raw;
-  const numero_exterior = elasticData.numero_exterior?.raw === undefined ? "" : elasticData.numero_exterior?.raw;
-  let asentamiento = elasticData.asentamiento?.raw === undefined ? "" : elasticData.asentamiento?.raw;
-  asentamiento = asentamiento === 'NINGUNO' ? '' : asentamiento;
-  const codigo_postal = elasticData.codigo_postal?.raw === undefined ? "" : elasticData.codigo_postal?.raw;
-  const municipio = elasticData.municipio?.raw === undefined ? "" : elasticData.municipio?.raw;
-  const localidad = elasticData.localidad?.raw === undefined ? "" : elasticData.localidad?.raw;
+  console.log("elasticData", elasticData);
+
+  //Cheacar que existan datos proveidos de api google
+  if (Object.entries(googleData).length !== 0) {
+    console.log("si hay datos");
+    console.log("googleData", googleData);
+    if (googleData.establecimiento.raw !== undefined) {
+      establecimiento = googleData.establecimiento.raw;
+    }
+    if (googleData.telefono.raw !== undefined) {
+      telefono = googleData.telefono.raw;
+    }
+    if (googleData.google_address.raw !== undefined) {
+      direccion = googleData.google_address.raw;
+    }
+    if (googleData.website.raw !== undefined) {
+      paginaWeb = googleData.website.raw;
+    }
+    if (googleData.url_google.raw !== undefined) {
+      googleMapsURL = googleData.url_google.raw;
+    }
+  } else {
+    console.log("no hay datos");
+    establecimiento = "";
+    googleMapsURL = "";
+    direccion = "";
+    paginaWeb = "";
+    telefono = "";
+    horarios = "";
+  }
+  const tipo_de_vialidad =
+    elasticData.tipo_de_vialidad?.raw === undefined
+      ? ""
+      : elasticData.tipo_de_vialidad?.raw;
+  const vialidad =
+    elasticData.vialidad?.raw === undefined ? "" : elasticData.vialidad?.raw;
+  const numero_exterior =
+    elasticData.numero_exterior?.raw === undefined
+      ? ""
+      : elasticData.numero_exterior?.raw;
+  let asentamiento =
+    elasticData.asentamiento?.raw === undefined
+      ? ""
+      : elasticData.asentamiento?.raw;
+  asentamiento = asentamiento === "NINGUNO" ? "" : asentamiento;
+  const codigo_postal =
+    elasticData.codigo_postal?.raw === undefined
+      ? ""
+      : elasticData.codigo_postal?.raw;
+  const municipio =
+    elasticData.municipio?.raw === undefined ? "" : elasticData.municipio?.raw;
+  const localidad =
+    elasticData.localidad?.raw === undefined ? "" : elasticData.localidad?.raw;
   const dire =
-    tipo_de_vialidad + " " + 
-    vialidad + " " + 
-    numero_exterior + ", " +
-    asentamiento + ", " +
-    codigo_postal + ", " +
-    municipio + ", " +
-    localidad + ". ";
+    tipo_de_vialidad +
+    " " +
+    vialidad +
+    " " +
+    numero_exterior +
+    ", " +
+    asentamiento +
+    ", " +
+    codigo_postal +
+    ", " +
+    municipio +
+    ", " +
+    localidad +
+    ". ";
   placeDireccion = dire;
   return (
     <div className="details-page">
-
       <img src={img} className="img-fluid" alt="streetview" />
       <div className="container">
         <div className="text-center">
-          <h1 className="mt-2">{elasticData.establecimiento?.raw || "nombre"}</h1>
+          <h1 className="mt-2">
+            {establecimiento
+              ? establecimiento
+              : elasticData.establecimiento?.raw || "nombre"}
+          </h1>
         </div>
       </div>
       <hr />
@@ -53,11 +113,15 @@ const PlaceDetails = ({ elasticData, googleData }) => {
           </div>
 
           <div className="col-2 p-1 text-center">
-            <button className="btn btn-outline-primary rounded-circle circle">
+            <a
+              target="blank"
+              href={googleMapsURL}
+              className="btn btn-outline-primary rounded-circle circle text-decoration-none"
+            >
               <div className="font-xs">
                 <i className="fas fa-map-marked-alt"></i>
               </div>
-            </button>
+            </a>
           </div>
 
           <div className="col-2 p-1 text-center">
@@ -109,7 +173,11 @@ const PlaceDetails = ({ elasticData, googleData }) => {
             </div>
             <div className="col-11">
               <span>
-                {placeDireccion === "  , , , , . " ? "Dirección" : placeDireccion}
+                {direccion
+                  ? direccion
+                  : placeDireccion === "  , , , , . "
+                  ? "Dirección"
+                  : placeDireccion}
               </span>
             </div>
           </div>
@@ -121,7 +189,9 @@ const PlaceDetails = ({ elasticData, googleData }) => {
               <i className="fas fa-globe"></i>
             </div>
             <div className="col-11">
-              <span>{elasticData.www?.raw || "Sin página"}</span>
+              <a target="blank" href={paginaWeb}>
+                {paginaWeb ? paginaWeb : elasticData.www?.raw || "Sin página"}
+              </a>
             </div>
           </div>
         </li>
@@ -139,7 +209,11 @@ const PlaceDetails = ({ elasticData, googleData }) => {
               <i className="fas fa-phone-alt"></i>
             </div>
             <div className="col-9">
-              <span>{elasticData.telefono?.raw || "Sin teléfono"}</span>
+              <span>
+                {telefono
+                  ? telefono
+                  : elasticData.telefono?.raw || "Sin teléfono"}
+              </span>
             </div>
             <div className="col-1">
               <span className="badge bg-primary rounded-pill">6</span>
@@ -172,15 +246,15 @@ const PlaceDetails = ({ elasticData, googleData }) => {
         </div>
 
         <li className="list-group-item list-group-item-action border-0">
-        <div className="row">
-          <div className="col-1 text-primary">
-            <i className="fas fa-clock"></i>
+          <div className="row">
+            <div className="col-1 text-primary">
+              <i className="fas fa-clock"></i>
+            </div>
+            <div className="col-11">
+              <span>Sin horarios</span>
+            </div>
           </div>
-          <div className="col-11">
-            <span>Sin horarios</span>
-          </div>
-        </div>
-      </li>
+        </li>
 
         <li className="list-group-item list-group-item-action border-0">
           <div className="row">
@@ -197,7 +271,9 @@ const PlaceDetails = ({ elasticData, googleData }) => {
 
       <div className="container">
         <p className="fs-6">
-          {elasticData.actividad?.raw === undefined ? '' : elasticData.actividad?.raw}
+          {elasticData.actividad?.raw === undefined
+            ? ""
+            : elasticData.actividad?.raw}
         </p>
       </div>
     </div>

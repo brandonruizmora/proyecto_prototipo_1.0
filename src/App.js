@@ -122,6 +122,8 @@ function App() {
       const [arreglo0] = results;
       const { place_id } = arreglo0;
       placedetails(place_id);
+    }else{
+      setGoogleData({});
     }
   };
 
@@ -153,7 +155,6 @@ function App() {
 
   const handleMarkerClic = (markerPlace) => {
     setElasticData(markerPlace);
-    setGoogleData(markerPlace);
     const column_details = document.getElementById('details-column');
     const column_map = document.getElementById('map-column');
     column_details.className="order-1 order-sm-0 col-sm-6 col-md-5 col-lg-4 mx-0 px-0 detailsclass";
