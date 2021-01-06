@@ -37,7 +37,7 @@ function App() {
 
   const elasticSearch = (item) => {
     const myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer search-r1e486xkf1c6h81itsnerjb3");
+    myHeaders.append("Authorization", "Bearer search-jnn5ybbdpzv2cthsxr2ejwe8");
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({ query: item, page: { size: 100 } });
@@ -50,7 +50,7 @@ function App() {
     };
 
     fetch(
-      "https://bb3c0f4fe4574eb892a78872d95fb03a.ent-search.us-east-1.aws.cloud.es.io/api/as/v1/engines/v-search/search",
+      "https://202b8342c2294b12ac4152fd53a746fb.ent-search.us-central1.gcp.cloud.es.io/api/as/v1/engines/k-search/search",
       requestOptions
     )
       .then((response) => response.json())
