@@ -33,11 +33,19 @@ const PlaceDetails = ({ elasticData, googleData }) => {
       googleMapsURL = googleData.url_google.raw;
     }
   } else {
-    console.log("no hay datos");
+    console.log("no hay datos, usando los de elastic");
     establecimiento = "";
-    googleMapsURL = "";
+    if(elasticData.location !== undefined){
+      googleMapsURL = `https://maps.google.com/?q=${elasticData.location.raw}`
+    }else{
+      googleMapsURL = "";
+    }
     direccion = "";
-    paginaWeb = "";
+    if(elasticData.www !== undefined){
+      paginaWeb = elasticData.www.raw;
+    }else{
+      paginaWeb = "#";
+    }
     telefono = "";
     horarios = "";
   }
