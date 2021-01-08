@@ -42,9 +42,17 @@ const PlaceDetails = ({ elasticData, googleData }) => {
     }
     direccion = "";
     if(elasticData.www !== undefined){
-      paginaWeb = elasticData.www.raw;
+      paginaWeb = elasticData.www.raw.toLowerCase();
+      console.log('lower case', paginaWeb)
+      if(paginaWeb.includes('http://')){
+        console.log('incluye http', paginaWeb)
+      }else{
+        console.log('no incluye http', paginaWeb)
+        paginaWeb = `http://${paginaWeb}`;
+        console.log('incluyendo http', paginaWeb)
+      }
     }else{
-      paginaWeb = "#";
+      paginaWeb = "";
     }
     telefono = "";
     horarios = "";
