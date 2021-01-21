@@ -1,4 +1,5 @@
 import React from "react";
+import { googleKey } from "../keys/keys";
 import {
   GoogleMap,
   LoadScript,
@@ -24,7 +25,7 @@ const options = {
 
 const MapPage = ({ locations, onLoad, onUnmount, handleMarkerClic }) => {
   return (
-    <LoadScript googleMapsApiKey="AIzaSyAG5AlZFaqqNd0ao3n5zNCESsY-GKyiGpE">
+    <LoadScript googleMapsApiKey={googleKey}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}

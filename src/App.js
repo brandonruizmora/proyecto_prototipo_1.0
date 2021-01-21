@@ -3,6 +3,7 @@ import "./App.css";
 import SearchBox from "./components/SearchBox";
 import PlaceDetails from "./components/PlaceDetails";
 import MapPage from "./components/MapPage";
+import { googleKey } from "./keys/keys";
 
 function App() {
   const [locations, setLocations] = useState([]);
@@ -105,7 +106,7 @@ function App() {
     const url =
       "https://maps.googleapis.com/maps/api/place/details/json?place_id=" +
       placeID +
-      "&fields=name,url,formatted_address,website,formatted_phone_number,rating,international_phone_number,type&key=AIzaSyAG5AlZFaqqNd0ao3n5zNCESsY-GKyiGpE";
+      "&fields=name,url,formatted_address,website,formatted_phone_number,rating,international_phone_number,type&key="+googleKey;
     fetch(proxyurl + url, requestOptions)
       .then((response) => response.json())
       .then((result) => handlePlaceDetailsData(result))
@@ -143,7 +144,7 @@ function App() {
       location +
       "&radius=250&keyword=" +
       name +
-      "&key=AIzaSyAG5AlZFaqqNd0ao3n5zNCESsY-GKyiGpE";
+      "&key="+googleKey;
 
     fetch(proxyurl + url, requestOptions)
       .then((response) => response.json())
