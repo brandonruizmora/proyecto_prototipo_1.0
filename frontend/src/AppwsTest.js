@@ -1,7 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import ws from './ws-test';
 
 const AppwsTest = () => {
+
+  const [apiResponse, setApiResponse] = useState('');
+
+  const callApi = () => {
+    fetch('http://localhost:9000/testAPI')
+      .then(res => res.text())
+      .then(res => setApiResponse(res));
+  }
 
     const handleChangeInput = (event) => {
         console.log(event.target.value)
@@ -18,8 +26,9 @@ const AppwsTest = () => {
           id="formGroupExampleInput"
           placeholder="Example input placeholder"
           onChange={handleChangeInput}
-          onClick={ws}
+          onClick={callApi}
         />
+        <p>{apiResponse}</p>
     </div>
   );
 };
