@@ -1,7 +1,17 @@
+var express = require("express");
+var router = express.Router();
 let puppeteer = require('puppeteer')
 let cheerio = require('cheerio')
 
-export const ws = (word) => {
+router.get("/", function(req, res, next) {
+    const v = ws('oxxo')
+    res.send('API is working properly' + v);
+});
+
+module.exports = router;
+
+
+const ws = (word) => { 
 
 const EMAIL_SELECTOR = '#username';
 const PASSWORD_SELECTOR = '#password';
@@ -10,7 +20,7 @@ const LINKEDIN_LOGIN_URL = 'https://www.linkedin.com/login?fromSignIn=true&trk=g
 
 if (word !== undefined) {
     (() => {
-        puppeteer.launch({ headless: true })
+        puppeteer.launch({ headless: false })
             .then(async (browser) => {
                 let page = await browser.newPage()
                 page.setViewport({ width: 1366, height: 768 });
@@ -31,6 +41,7 @@ if (word !== undefined) {
                                 if (textExtracted !== undefined) {
                                     const extractedWords = textExtracted.trim().split(' ');
                                     console.log(extractedWords[2] + ' Employees');
+                                    return extractedWords[2] + ' Employees';
                                 } else {
                                     console.log("Unable to fetch results. Please try again!")
                                 }
@@ -44,5 +55,3 @@ if (word !== undefined) {
 }
 
 }
-
-export default ws

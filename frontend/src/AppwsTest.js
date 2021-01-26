@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import ws from './ws-test';
 
 const AppwsTest = () => {
 
