@@ -151,8 +151,7 @@ function wspromisep(word) {
   return new Promise((resolve) => {
     const EMAIL_SELECTOR = "#username";
     const PASSWORD_SELECTOR = "#password";
-    const SUBMIT_SELECTOR =
-      "#app__container > main > div > form > div.login__form_action_container > button";
+    const SUBMIT_SELECTOR = "#app__container > main > div.card-layout > div > form > div.login__form_action_container > button";
     const LINKEDIN_LOGIN_URL =
       "https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin";
 
@@ -183,37 +182,24 @@ function wspromisep(word) {
                 const content = page.content();
                 content.then((success) => {
                   const $ = cheerio.load(success);
-                  // const persona = $('.entity-result__content.entity-result__divider.pt3.pb3.t-12.t-black--light').find('a').find('span').find('span');
-                  // console.log(persona.html());
 
-                  // const thirdPersona = $('.entity-result__content.entity-result__divider.pt3.pb3.t-12.t-black--light').next();
-                  // console.log(thirdPersona.html());
+                  let personas = [];
 
-                  // const container = $('.entity-result__content.entity-result__divider.pt3.pb3.t-12.t-black--light .mb1 .linked-area.cursor-pointer');
-                  // console.log(container.html());
+                  $('ul.reusable-search__entity-results-list li.reusable-search__result-container').each((index, el) => {
+                    const nombre = $(el).find('a.app-aware-link span[aria-hidden="true"]').text();
+                    const empleo = $(el).find('div.entity-result__primary-subtitle.t-14.t-black').text().trim();
+                    const recide = $(el).find('div.entity-result__secondary-subtitle.t-14').text().trim();
 
-                  // const persona = $('div.linked-area.cursor-pointer').find('a').find('span').find('span').each((index, element) => {
-                  //   console.log(index, $(element).text())
-                  // });
-                  // console.log(persona.html());
-
-                  const personas = $('div.entity-result div.entity-result__content div.mb1 div.linked-area').each((index, el) => {
-                    const nombre = $(el).find('a.app-aware-link').find('span[aria-hidden="true"]');
-                    const empleo = $(el).find('div.entity-result__primary-subtitle.t-14.t-black');
-                    const recide = $(el).find('div.entity-result__secondary-subtitle.t-14')
-                    // console.log(index, nombre)
+                    personas.push({
+                      nombre: nombre,
+                      empleo: empleo,
+                      lugar: recide,
+                    })
                     
-                    console.log(index, $(nombre).text(), $(empleo).text().trim(), $(recide).text().trim())
                   });
-                  // console.log(personas.html())
-
-                  
-                  const textExtracted = $(
-                    ".reusable-search__entity-results-list.list-style-none"
-                  ).text();
-                  if (textExtracted !== undefined) {
-                    const extractedWords = textExtracted.trim().split(" ");
-                    resolve(extractedWords + " Employees");
+                  if (personas.length !== 0 || personas.length !== undefined) {
+                    resolve(personas);
+                    browser.close();
                   } else {
                     console.log("Unable to fetch results. Please try again!");
                   }
